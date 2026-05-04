@@ -1,0 +1,168 @@
+/* Configurações Gerais */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+:root {
+    --dark-blue: #0b1c28;
+    --green-accent: #76a713;
+    --orange-accent: #ffb13b;
+}
+
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+/* Remova ou substitua o estilo antigo da .nav-menu por este: */
+
+.header-title-center {
+    flex: 1;                /* Faz essa div ocupar o espaço do meio */
+    text-align: center;     /* Centraliza o texto dentro desse espaço */
+}
+
+.header-title-center h2 {
+    margin: 0;
+    font-size: 22px;
+    color: var(--dark-blue);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Opcional: deixa o título em caixa alta */
+}
+
+/* Ajuste no container para garantir o alinhamento */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-right: 20px;
+}
+/* O Retângulo Inclinado do Logo */
+.logo-section {
+    background-color: var(--dark-blue);
+    color: white;
+    height: 100%;
+    padding: 0 50px 0 30px;
+    display: flex;
+    align-items: center;
+    /* Faz o corte inclinado na direita */
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+}
+
+.logo-content {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Menu de Navegação */
+.nav-menu {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-menu a.active {
+    color: var(--green-accent);
+    border-bottom: 2px solid var(--green-accent);
+}
+
+/* Lado Direito (Idiomas e Botões) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.menu-toggle {
+    background-color: var(--orange-accent);
+    border: none;
+    padding: 12px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--dark-blue);
+    font-weight: bold;
+}
+
+/* Sombra que você pediu ao dar scroll */
+.header-shadow {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    height: 70px !important; /* Diminui um pouco ao rolar */
+}
+
+/* POLAROIDS */
+.container-polaroids {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 150px 20px 50px; /* Espaçamento superior para o menu fixo */
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: rotate(-3deg); /* Efeito tortinho de foto antiga */
+}
+
+.polaroid img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+.lang-select {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+}
+
+.lang-select:hover {
+    border-color: var(--green-accent);
+}
+/* DIV DIVIDIDA (TEXTO E FOTO) */
+.secao-info {
+    display: flex;
+    align-items: center;
+    background-color: #333; /* Cor do fundo da div */
+    color: white;
+    padding: 50px;
+}
+
+.texto-esquerda { flex: 1; padding-right: 20px; }
+.foto-direita { flex: 1; }
+.foto-direita img { width: 100%; border-radius: 8px; }
+
+/* SISTEMA DE BOXES */
+.sistema-escolha { padding: 50px; text-align: center; }
+.box-option { margin: 10px; display: inline-block; }
+
+/* RODAPÉ */
+.footer-custom {
+    background: #222;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+.footer-gallery img { width: 80px; margin: 5px; border-radius: 4px; }
