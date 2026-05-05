@@ -15,12 +15,13 @@ const PORT = process.env.PORT || 3000;
 // ⚠️  CONFIGURE AQUI antes de rodar
 // ============================================================
 const DB_CONFIG = {
-  host:     process.env.DB_HOST     || 'localhost',
-  user:     process.env.DB_USER     || 'root',
-  password: process.env.DB_PASS     || '',
-  database: process.env.DB_NAME     || 'aniversario',
+  host:     process.env.DB_HOST     || 'beugqhwqhhqfzbus6a2w-mysql.services.clever-cloud.com',
+  user:     process.env.DB_USER     || 'ukyltqnb1dap17jz',
+  password: process.env.DB_PASS     || '3MasFkDg2eSqABbowW83',
+  database: process.env.DB_NAME     || 'beugqhwqhhqfzbus6a2w',
   port:     Number(process.env.DB_PORT) || 3306,
   charset:  'utf8mb4',
+    ssl: { rejectUnauthorized: false }
 };
 const SESSION_SECRET = 'dantas-18-anos-secret-key';
 
