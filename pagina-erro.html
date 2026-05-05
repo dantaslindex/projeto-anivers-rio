@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dantas · Acesso Negado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --dark: #0b1520; --cream: #f8f5ef; --white: #ffffff; --gray: #6b7280; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; overflow: hidden; }
+  body::before { content: '✕'; position: fixed; font-family: 'Playfair Display', serif; font-size: 70vw; font-weight: 900; color: rgba(220,38,38,0.04); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; user-select: none; z-index: 0; line-height: 1; }
+  .card { background: var(--white); border-radius: 28px; padding: 64px 52px; width: 100%; max-width: 500px; box-shadow: 0 24px 80px rgba(11,21,32,0.1); position: relative; z-index: 1; text-align: center; animation: fadeUp 0.5s ease; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  .error-icon { width: 80px; height: 80px; background: linear-gradient(135deg,#dc2626,#f87171); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; box-shadow: 0 8px 32px rgba(220,38,38,0.25); animation: popIn 0.5s 0.2s cubic-bezier(0.175,0.885,0.32,1.275) both; }
+  @keyframes popIn { from { transform:scale(0); opacity:0; } to { transform:scale(1); opacity:1; } }
+  .error-icon svg { width: 40px; height: 40px; stroke: white; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: var(--dark); margin-bottom: 12px; letter-spacing: -0.5px; }
+  .card-sub { font-size: 15px; color: var(--gray); font-weight: 300; line-height: 1.7; margin-bottom: 36px; }
+  .card-sub strong { color: var(--dark); font-weight: 500; }
+  .info-box { background: #fef2f2; border: 1.5px solid #fca5a5; border-radius: 14px; padding: 20px 24px; margin-bottom: 36px; text-align: left; }
+  .info-box p { font-size: 14px; color: #991b1b; line-height: 1.6; }
+  .info-box p + p { margin-top: 8px; }
+  .btn-back { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; background: var(--dark); color: white; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .btn-back:hover { background: #1e3a50; transform: translateY(-1px); }
+  .footer-note { text-align: center; font-size: 12px; color: #b0b0b0; margin-top: 28px; }
+  @media (max-width: 480px) { .card { padding: 48px 28px; } }
+
+  /* =============================================
+     RESPONSIVO MOBILE — adicionado automaticamente
+     ============================================= */
+
+  /* Polaroid mais pequeno em mobile */
+  @media (max-width: 600px) {
+    .hero-polaroid img { width: 160px; height: 200px; }
+    .hero-polaroid { padding: 8px 8px 20px; }
+  }
+
+  /* Tablet: 2 colunas nos cards */
+  @media (max-width: 768px) {
+    .options-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .modal-card { padding: 36px 24px; margin: 16px; }
+    .header-inner { grid-template-columns: auto 1fr; padding: 0 20px; }
+    .header-title { display: none; }
+    .info-grid { grid-template-columns: 1fr; gap: 40px; }
+    .info-img-wrap { order: -1; max-width: 320px; margin: 0 auto; }
+    .section { padding: 64px 20px; }
+    .section-inner { padding: 0; }
+  }
+
+  /* Mobile: 1 coluna, tudo empilhado */
+  @media (max-width: 480px) {
+    .hero { padding: 80px 16px 40px; min-height: auto; }
+    .hero-content { padding: 0; }
+    .options-grid { grid-template-columns: 1fr; gap: 10px; }
+    .option-card {
+      flex-direction: row;
+      align-items: center;
+      padding: 16px 20px;
+      gap: 16px;
+    }
+    .option-card .option-icon { font-size: 28px; flex-shrink: 0; }
+    .option-card .option-name { font-size: 15px; }
+    .option-check { position: static; margin-left: auto; flex-shrink: 0; }
+    .section { padding: 56px 16px; }
+    .gift-heading { font-size: 28px; }
+    .info-title { font-size: 30px; }
+    .validation-bar { font-size: 13px; padding: 12px 14px; }
+    .btn-confirm { padding: 16px 24px; font-size: 15px; min-height: 52px; }
+    .modal-overlay { padding: 16px; align-items: flex-end; }
+    .modal-card { border-radius: 20px 20px 16px 16px; padding: 32px 20px 28px; width: 100%; max-width: 100%; }
+    .modal-title { font-size: 22px; }
+    .modal-btn { padding: 14px; min-height: 48px; }
+    /* Login input: evita zoom no iOS */
+    input[type="text"], input[type="email"] { font-size: 16px; }
+    /* Login cards parentesco em linha */
+    .parentesco-options { grid-template-columns: 1fr 1fr 1fr; }
+    .parentesco-options label { padding: 12px 4px; font-size: 12px; }
+    .parentesco-options label .opt-icon { font-size: 20px; }
+    /* Resumo */
+    .outer { padding: 6px; }
+    .card { padding: 36px 18px 28px; }
+    .pix-key { font-size: 13px; letter-spacing: 0; }
+    .escolhas { padding: 16px 14px; }
+    .card-title { font-size: 26px; }
+  }
+
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="error-icon">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+  <h1 class="card-title">Acesso não autorizado</h1>
+  <p class="card-sub" id="card-sub">
+    Seu nome ou parentesco não foi reconhecido.<br>
+    Verifique os dados e tente novamente.
+  </p>
+  <div class="info-box">
+    <p>⚠️ Este site é exclusivo para convidados do aniversário.</p>
+    <p>Se você acredita que houve um erro, entre em contato com o aniversariante.</p>
+  </div>
+  <a class="btn-back" href="login.html">← Voltar ao início</a>
+  <p class="footer-note">© 2024 Dantas · Feito com 💚</p>
+</div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const nome = params.get('nome');
+  if (nome) {
+    document.getElementById('card-sub').innerHTML =
+      `Olá, <strong>${nome}</strong>. Seu nome não foi encontrado na lista de convidados.<br>
+       Verifique os dados e tente novamente.`;
+  }
+</script>
+</body>
+</html>
